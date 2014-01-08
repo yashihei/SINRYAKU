@@ -87,13 +87,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConstParam.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="GameManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConstParam.h" />
     <ClInclude Include="global.h" />
-    <ClInclude Include="Stage.h" />
+    <ClInclude Include="GameManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,11 +1,12 @@
 #include <Dxlib.h>
 #include <memory>
 #include "global.h"
+#include "ConstParam.h"
 #include "GameManager.h"
 #pragma warning(disable:4996)
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine, int nCmdShow ) {
-	//SetGraphMode();画面サイズ任意
+	SetGraphMode(ConstParam::SCREEN_WIDTH, ConstParam::SCREEN_HEIGHT, 32);//画面サイズ任意
 	if (MessageBox(NULL,"フルスクリーンで起動しますか？","起動オプション",MB_YESNO) == IDYES) {
 		ChangeWindowMode(FALSE);
 	} else {
@@ -33,7 +34,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine
 		InputUpdate();
 
 		gm->Move();
-
+		
 		ClearDrawScreen();
 		gm->Draw();
 		ScreenFlip();
