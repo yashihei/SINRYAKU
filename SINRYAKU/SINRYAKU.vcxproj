@@ -91,11 +91,13 @@
     <ClCompile Include="global.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConstParam.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Stage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
