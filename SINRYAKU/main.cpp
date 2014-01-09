@@ -7,11 +7,11 @@
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine, int nCmdShow ) {
 	SetGraphMode(ConstParam::SCREEN_WIDTH, ConstParam::SCREEN_HEIGHT, 32);//画面サイズ任意
-	if (MessageBox(NULL,"フルスクリーンで起動しますか？","起動オプション",MB_YESNO) == IDYES) {
-		ChangeWindowMode(FALSE);
-	} else {
-		ChangeWindowMode(TRUE);
-	}
+	//if (MessageBox(NULL,"フルスクリーンで起動しますか？","起動オプション",MB_YESNO) == IDYES) {
+	//	ChangeWindowMode(FALSE);
+	//} else {
+	//	ChangeWindowMode(TRUE);
+	//}
 
 	SetOutApplicationLogValidFlag(FALSE);
 	SetMainWindowText("SINRYAKU");
