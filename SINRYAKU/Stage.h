@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <initializer_list>
 
 class Stage
 {
@@ -8,12 +9,18 @@ class Stage
 		RED,
 		BLUE,
 		GREEN,
-		NONE,
+		WALL,
+	};
+
+	struct Point {
+		int x, y;
+		Point(int x, int y) {this->x = x, this->y = y;};
 	};
 
 	int height, width, size, cnt;
 	//std::array<std::array<Color, width>, height> map;
 	std::vector<std::vector<Color>> map;
+	std::vector<std::vector<Color>> tMap;
 
 public:
 	Stage(void);
