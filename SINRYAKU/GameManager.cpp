@@ -1,11 +1,12 @@
 #include <DxLib.h>
 #include "GameManager.h"
 #include "Stage.h"
+#include "StatusBar.h"
 #include "global.h"
 
 GameManager::GameManager(void) {
 	state = State::IN_GAME;//‚Æ‚è‚ ‚¦‚¸‚Í
-	stage = std::make_shared<Stage>();
+	stage = std::make_shared<Stage>(this);
 }
 
 void GameManager::Move(void) {

@@ -87,7 +87,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="ConstParam.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="main.cpp" />
@@ -95,7 +94,6 @@
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StatusBar.h" />
     <ClInclude Include="ConstParam.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="GameManager.h" />

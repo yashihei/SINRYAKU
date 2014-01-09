@@ -1,12 +1,20 @@
 #include <DxLib.h>
 #include "Stage.h"
 #include "ConstParam.h"
+#include "GameManager.h"
+#include "global.h"
 
-Stage::Stage(void) {
+Stage::Stage(GameManager* gameManager) {
+	this->gameManager = gameManager;
 	size = 5;
 	height = ConstParam::SCREEN_HEIGHT / size;
 	width = ConstParam::SCREEN_WIDTH / size;
+	Init();
+}
+
+void Stage::Init(void) {
 	cnt = 0;
+	sep = 5;
 	map.resize(height);
 	for (int i = 0; i < width; i++) map[i].resize(width);
 	for (int i = 0; i < map.size(); i++) for (int j = 0; j < map[i].size(); j++) map[i][j] = Color::RED;
@@ -15,11 +23,18 @@ Stage::Stage(void) {
 
 void Stage::Move(void) {
 	cnt++;
+	if (GetKey(KEY_INPUT_R) == 1) Init();
+	if (GetKey(KEY_INPUT_LEFT) == 1) sep++;
+	if (GetKey(KEY_INPUT_RIGHT) == 1 && sep > 1) sep--;
+	if (cnt % sep != 0) return;
+
 	for (int y = 0; y < map.size(); y++) {
 		for (int x = 0; x < map[y].size(); x++) {
 			replace(x, y);
 		}
 	}
+	countCell();
+	if (redCount == 0 || blueCount == 0);//I—¹
 }
 
 void Stage::Draw(void) {
@@ -33,9 +48,6 @@ void Stage::Draw(void) {
 				break;
 			case Color::BLUE:
 				rgb = GetColor(0, 100, 255);
-				break;
-			case Color::GREEN:
-				rgb = GetColor(0, 255, 0);
 				break;
 			case Color::WALL:
 				rgb = GetColor(0, 0, 0);
@@ -89,3 +101,14 @@ void Stage::replace(int x, int y) {
 	//Point p = vec[GetRand(vec.size() - 1)];
 	//map[x][y] = map[p.x][p.y];
 }
+
+void Stage::countCell(void) {
+	redCount = blueCount = 0;
+	for (int y = 0; y < map.size(); y++) {
+		for (int x = 0; x < map[y].size(); x++) {
+			if (map[x][y] == Color::RED) redCount++;
+			if (map[x][y] == Color::BLUE) blueCount++;
+		}
+	}
+}
+

@@ -2,6 +2,7 @@
 #include <memory>
 
 class Stage;
+class StatusBar;
 
 class GameManager
 {
