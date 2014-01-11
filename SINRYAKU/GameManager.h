@@ -3,6 +3,7 @@
 
 class Stage;
 class StatusBar;
+class Fps;
 
 class GameManager
 {
@@ -15,6 +16,7 @@ class GameManager
 
 	State state;
 	std::shared_ptr<Stage> stage;
+	std::shared_ptr<Fps> fps;
 
 public:
 	GameManager(void);

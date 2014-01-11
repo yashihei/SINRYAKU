@@ -67,18 +67,17 @@ bool Stage::isOut(int x, int y) {
 }
 
 void Stage::replace(int x, int y) {
-	int r = GetRand(4);
-	int cnt = 0;
+	//int r = GetRand(4);
+	//int cnt = 0;
 	//VC2012の標準ライブラリが初期化リストに非対応だったのでこんなことに
 	//std::vector<Point> dir = { {-1, 0}, {1, 0}, {0, 1}, {0, -1} };
-	const int DIR[][2] = { {-1, 0}, {1, 0}, {0, 1}, {0, -1} };
-	for (auto& p: DIR) {
-		if (!isOut(x + p[0], y + p[1]) && cnt == r) {
-			map[x][y] = map[x + p[0]][y + p[1]];
-		}
-		if (cnt == r) return;
-		cnt++;
-	}
+	//for (auto& p: DIR) {
+	//	if (!isOut(x + p[0], y + p[1]) && cnt == r) {
+	//		map[x][y] = map[x + p[0]][y + p[1]];
+	//	}
+	//	if (cnt == r) return;
+	//	cnt++;
+	//}
 
 	//ボツ
 	//for (int dy = -1; dy < 2; dy++) {
@@ -94,12 +93,16 @@ void Stage::replace(int x, int y) {
 	//}
 
 	//vectorコストおもひ
-	//std::vector<Point> vec;
-	//for (auto& p: DIR) {
-	//	if (!isOut(x + p[0], y + p[1])) vec.push_back(Point(x + p[0], y + p[1]));
-	//}
-	//Point p = vec[GetRand(vec.size() - 1)];
-	//map[x][y] = map[p.x][p.y];
+	//→reserveしてやらないと、3,4回も要素確保行う
+	std::vector<Point> vec;
+	vec.reserve(4);
+	//printf("%d\n", vec.capacity());
+	const int DIR[][2] = { {-1, 0}, {1, 0}, {0, 1}, {0, -1} };
+	for (auto& p: DIR) {
+		if (!isOut(x + p[0], y + p[1])) vec.push_back(Point(x + p[0], y + p[1]));
+	}
+	Point p = vec[GetRand(vec.size() - 1)];
+	map[x][y] = map[p.x][p.y];
 }
 
 void Stage::countCell(void) {
@@ -111,4 +114,3 @@ void Stage::countCell(void) {
 		}
 	}
 }
-

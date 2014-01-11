@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+#define DEBUG
 extern void InputUpdate();
 extern int GetKey(int KeyCode);
 extern int GetMouse();

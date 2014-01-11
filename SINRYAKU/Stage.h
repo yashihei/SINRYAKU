@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <initializer_list>
 
 class GameManager;
 
@@ -15,6 +14,7 @@ class Stage
 
 	struct Point {
 		int x, y;
+		Point(){};
 		Point(int x, int y) {this->x = x, this->y = y;};
 	};
 

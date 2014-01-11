@@ -24,9 +24,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine
 	//ChangeFont("BM mini", DX_CHARSET_DEFAULT);//多分これしか使わない
 	//SetFontSize(18);
 
+#ifdef DEBUG
 	//デバグ用にコンソール出してやる
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
+#endif
 
 	auto gm = std::make_shared<GameManager>();
 

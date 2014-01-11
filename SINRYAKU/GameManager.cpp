@@ -3,10 +3,12 @@
 #include "Stage.h"
 #include "StatusBar.h"
 #include "global.h"
+#include "Fps.h"
 
 GameManager::GameManager(void) {
 	state = State::IN_GAME;//‚Æ‚è‚ ‚¦‚¸‚Í
 	stage = std::make_shared<Stage>(this);
+	fps = std::make_shared<Fps>();
 }
 
 void GameManager::Move(void) {
@@ -19,8 +21,13 @@ void GameManager::Move(void) {
 		if (GetKey(KEY_INPUT_SPACE) == 1) state = State::IN_GAME;
 		break;
 	}
+	fps->Move();
+	//fps->Wait();
 }
 
 void GameManager::Draw(void) {
 	stage->Draw();
+#ifdef DEBUG
+	fps->Draw();
+#endif
 }
